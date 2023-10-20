@@ -5,7 +5,6 @@ import com.performance.tune.sample.pojo.Employee;
 import com.performance.tune.sample.pojo.Genre;
 
 import java.time.Year;
-import java.util.Arrays;
 import java.util.List;
 
 public class DataGenerator {
@@ -21,8 +20,8 @@ public class DataGenerator {
         return cdList;
     }
 
-    public static List<List<CD>> getCDArrays(){
-        return Arrays.asList(getCDs());
+    public static Object[] getCDArrays(){
+        return getCDs().toArray();
     }
 
 
