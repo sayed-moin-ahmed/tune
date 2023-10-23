@@ -33,5 +33,10 @@ public class DataGenerator {
         return  List.of(employee1,employee2,employee3,employee4);
     }
 
+    public final static String value = """ 
+                Wise men learn from their mistakes.
+                But wiser men learn from the mistakes of others.
+                And fools just carry on.
+                """;
 
 }
