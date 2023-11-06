@@ -3,6 +3,7 @@ package com.performance.tune.sample.utility;
 import com.performance.tune.sample.pojo.CD;
 import com.performance.tune.sample.pojo.Employee;
 import com.performance.tune.sample.pojo.Genre;
+import com.performance.tune.sample.pojo.Person;
 
 import java.time.Year;
 import java.util.List;
@@ -33,10 +34,23 @@ public class DataGenerator {
         return  List.of(employee1,employee2,employee3,employee4);
     }
 
+    public static List<Person> getPersons(){
+        var person1 = new Person(10,"sam");
+        var person2 = new Person(10,"sam");
+        var person3 = new Person(10,"sam");
+        var person4 = new Person(10,"pam");
+        var person5 = new Person(15,"rock");
+        return List.of(person1,person2,person3,person4,person5);
+    }
+
+
     public final static String value = """ 
                 Wise men learn from their mistakes.
                 But wiser men learn from the mistakes of others.
                 And fools just carry on.
                 """;
+
+
+
 
 }

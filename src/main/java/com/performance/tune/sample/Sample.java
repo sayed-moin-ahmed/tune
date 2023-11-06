@@ -23,6 +23,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.IntPredicate;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -45,8 +46,21 @@ public class Sample {
 
         //stringStream();
 
-        fileReadStream();
+        //fileReadStream();
 
+        //dropWhile();
+
+        //distinct();
+    }
+
+    private static void distinct() {
+        //distinct works on equals and hashcode, if we remove then distinct will not work
+        DataGenerator.getPersons().stream().distinct().toList().forEach(System.out::println);
+    }
+
+    private static void dropWhile() {
+        var value = Stream.of("a","b","a","ab","abc").dropWhile(val->val.length()<=1).collect(Collectors.groupingBy(String::length));
+        System.out.println(value);
     }
 
     private static void fileReadStream() {
@@ -62,7 +76,7 @@ public class Sample {
     }
 
     private static void stringStream() {
-        DataGenerator.value.lines().map(e->e.split(" ")).collect(Collectors.groupingBy(Function.identity())).entrySet().forEach(e->System.out.println(e.getKey()+""+e.getValue()));
+        DataGenerator.value.lines().map(e->e.split("")).collect(Collectors.groupingBy(Function.identity())).entrySet().forEach(e->System.out.println(e.getKey()+""+e.getValue()));
     }
 
     private static void writeCharFromStringToSout(String value) {
