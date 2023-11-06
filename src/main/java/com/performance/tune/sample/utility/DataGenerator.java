@@ -37,8 +37,8 @@ public class DataGenerator {
     public static List<Person> getPersons(){
         var person1 = new Person(10,"sam");
         var person2 = new Person(10,"sam");
-        var person3 = new Person(10,"sam");
-        var person4 = new Person(10,"pam");
+        var person3 = new Person(11,"sam");
+        var person4 = new Person(12,"pam");
         var person5 = new Person(15,"rock");
         return List.of(person1,person2,person3,person4,person5);
     }

@@ -3,6 +3,7 @@ package com.performance.tune.sample;
 
 import com.performance.tune.sample.pojo.CD;
 import com.performance.tune.sample.pojo.Employee;
+import com.performance.tune.sample.pojo.Person;
 import com.performance.tune.sample.utility.DataGenerator;
 
 import java.io.BufferedReader;
@@ -25,6 +26,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -51,6 +53,15 @@ public class Sample {
         //dropWhile();
 
         //distinct();
+
+        //removeIf();
+    }
+
+    private static void removeIf() {
+        Predicate<Person> test = person -> person.getAge()<=10;
+        var result = new ArrayList<Person>(DataGenerator.getPersons());
+        result.removeIf(test::test);
+        System.out.println(result);
     }
 
     private static void distinct() {
