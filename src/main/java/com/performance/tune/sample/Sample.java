@@ -56,20 +56,22 @@ public class Sample {
     }
 
     private static void rangeClosedWithNewArrayList() {
-        List<Integer> collect = IntStream.rangeClosed(1,  10).collect(ArrayList::new, List::add, List::addAll);
+        List<Integer> collect = IntStream.range(1,  10).boxed().sorted(Collections.reverseOrder()).collect(ArrayList::new, List::add, List::addAll);
         System.out.println(collect);
+        List<Integer> collect1 = IntStream.range(1,  10).collect(ArrayList::new, List::add, List::addAll);
+        System.out.println(collect1);
     }
 
     private static void flatMap() {
-       /* DataGenerator.getEmployees().stream()
+        DataGenerator.getEmployees().stream()
                 .peek(System.out::println)
                 .flatMap(e-> e.getAddress().stream())
-                .forEach(System.out::println);*/
-        List<String> input = List.of("a", "b", "c");
+                .forEach(System.out::println);
+       /* List<String> input = List.of("a", "b", "c");
         List<String> result = input.stream()
                 .flatMap(element -> Stream.of(element + "-1", element + "-2"))
                 .collect(Collectors.toList());
-        System.out.println(result);
+        System.out.println(result);*/
     }
 
     private static void mapMulti() {
