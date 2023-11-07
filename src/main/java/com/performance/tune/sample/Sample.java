@@ -52,19 +52,39 @@ public class Sample {
         //removeIf();
         //flatMap();
         //mapMulti();
+        rangeClosedWithNewArrayList();
+    }
+
+    private static void rangeClosedWithNewArrayList() {
+        List<Integer> collect = IntStream.rangeClosed(1,  10).collect(ArrayList::new, List::add, List::addAll);
+        System.out.println(collect);
     }
 
     private static void flatMap() {
-        DataGenerator.getEmployees().stream()
+       /* DataGenerator.getEmployees().stream()
                 .peek(System.out::println)
                 .flatMap(e-> e.getAddress().stream())
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
+        List<String> input = List.of("a", "b", "c");
+        List<String> result = input.stream()
+                .flatMap(element -> Stream.of(element + "-1", element + "-2"))
+                .collect(Collectors.toList());
+        System.out.println(result);
     }
 
     private static void mapMulti() {
-        Stream.of(1, 2, 3, 4)
+     /*   Stream.of(1, 2, 3, 4)
                 .mapMulti((number, downstream) -> downstream.accept(number))
-                .forEach(System.out::print);
+                .forEach(System.out::print);*/
+
+        List<String> input = List.of("a", "b", "c");
+        List<String> result = input.stream()
+                .<String>mapMulti((element, consumer) -> {
+                    consumer.accept(element + "-1");
+                    consumer.accept(element + "-2");
+                })
+                .collect(Collectors.toList());
+        System.out.println(result);
     }
 
     private static void removeIf() {
