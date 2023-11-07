@@ -42,27 +42,26 @@ import java.util.stream.Stream;
 
 public class Sample {
     public static void main(String[] args) throws InterruptedException {
-
         //mergeStream();
-
         //arraysToStream();
-
         //writeCharFromStringToSout(DataGenerator.value);
-
         //stringStream();
-
         //fileReadStream();
-
         //dropWhile();
-
         //distinct();
-
         //removeIf();
+        //flatMap();
+        //mapMulti();
+    }
 
-    /*DataGenerator.getEmployees().stream()
-            .peek(System.out::println)
-            .flatMap(e-> e.getAddress().stream())
-            .forEach(System.out::println);*/
+    private static void flatMap() {
+        DataGenerator.getEmployees().stream()
+                .peek(System.out::println)
+                .flatMap(e-> e.getAddress().stream())
+                .forEach(System.out::println);
+    }
+
+    private static void mapMulti() {
         Stream.of(1, 2, 3, 4)
                 .mapMulti((number, downstream) -> downstream.accept(number))
                 .forEach(System.out::print);
