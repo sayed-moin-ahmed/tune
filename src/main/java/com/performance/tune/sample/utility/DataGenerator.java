@@ -1,5 +1,6 @@
 package com.performance.tune.sample.utility;
 
+import com.performance.tune.sample.pojo.Address;
 import com.performance.tune.sample.pojo.CD;
 import com.performance.tune.sample.pojo.Employee;
 import com.performance.tune.sample.pojo.Genre;
@@ -27,10 +28,11 @@ public class DataGenerator {
 
 
     public static List<Employee> getEmployees(){
-        var employee1 =  new Employee(1,"a",10,"MALE","IT",01012020,1000);
-        var employee3 = new Employee(3,"b",15,"FEMALE","IT",01012021,1001);
-        var employee2 = new Employee(2,"c",10,"FEMALE","SALES",01012020,1000);
-        var employee4= new Employee(4,"d",15,"MALE","SALES",01012021,1001);
+        var addresses = List.of(new Address("avenu","blr",101),new Address("avenu","ngp",102));
+        var employee1 =  new Employee(1,"a",10,"MALE","IT",01012020,1000, addresses);
+        var employee3 = new Employee(3,"b",15,"FEMALE","IT",01012021,1001, addresses);
+        var employee2 = new Employee(2,"c",10,"FEMALE","SALES",01012020,1000, addresses);
+        var employee4= new Employee(4,"d",15,"MALE","SALES",01012021,1001, addresses);
         return  List.of(employee1,employee2,employee3,employee4);
     }
 
@@ -49,8 +51,5 @@ public class DataGenerator {
                 But wiser men learn from the mistakes of others.
                 And fools just carry on.
                 """;
-
-
-
 
 }

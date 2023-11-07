@@ -1,6 +1,7 @@
 package com.performance.tune.sample;
 
 
+import com.performance.tune.sample.pojo.Address;
 import com.performance.tune.sample.pojo.CD;
 import com.performance.tune.sample.pojo.Employee;
 import com.performance.tune.sample.pojo.Person;
@@ -23,6 +24,8 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.IntUnaryOperator;
@@ -55,6 +58,14 @@ public class Sample {
         //distinct();
 
         //removeIf();
+
+    /*DataGenerator.getEmployees().stream()
+            .peek(System.out::println)
+            .flatMap(e-> e.getAddress().stream())
+            .forEach(System.out::println);*/
+        Stream.of(1, 2, 3, 4)
+                .mapMulti((number, downstream) -> downstream.accept(number))
+                .forEach(System.out::print);
     }
 
     private static void removeIf() {
