@@ -52,7 +52,8 @@ public class Sample {
         //removeIf();
         //flatMap();
         //mapMulti();
-        rangeClosedWithNewArrayList();
+        //rangeClosedWithNewArrayList();
+        System.out.println("hello".chars().skip(1).limit(2).mapToObj(e->(char) e).findFirst().get());
     }
 
     private static void rangeClosedWithNewArrayList() {
