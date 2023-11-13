@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -53,7 +54,17 @@ public class Sample {
         //flatMap();
         //mapMulti();
         //rangeClosedWithNewArrayList();
-        System.out.println("hello".chars().skip(1).limit(2).mapToObj(e->(char) e).findFirst().get());
+        //System.out.println("hello".chars().skip(1).limit(2).mapToObj(e->(char) e).findFirst().get());
+        //findMatch();
+        var result = DataGenerator.getEmployees().stream().max(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getId));
+        System.out.println(result);
+
+    }
+
+    private static void findMatch() {
+        System.out.println(IntStream.rangeClosed(1,10).anyMatch(e->e/2==0));
+        System.out.println(IntStream.rangeClosed(1,10).allMatch(e->e/2==0));
+        System.out.println(IntStream.rangeClosed(1,10).noneMatch(e->e/2==0));
     }
 
     private static void rangeClosedWithNewArrayList() {
