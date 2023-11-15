@@ -26,12 +26,14 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 import java.util.stream.Collector;
@@ -56,9 +58,22 @@ public class Sample {
         //rangeClosedWithNewArrayList();
         //System.out.println("hello".chars().skip(1).limit(2).mapToObj(e->(char) e).findFirst().get());
         //findMatch();
-        var result = DataGenerator.getEmployees().stream().max(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getId));
-        System.out.println(result);
+        //minMaxAvg();
+        //reduce();
+    }
 
+    private static void reduce() {
+        Double totalSalary = DataGenerator.getEmployees().stream().reduce(0.0,(sum,e)->sum+e.getSalary(),(sum1,sum2)->sum1+sum2);
+        System.out.println(totalSalary);
+    }
+
+    private static void minMaxAvg() {
+        Employee maxSalary = DataGenerator.getEmployees().stream().max(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getId)).get();
+        System.out.println(maxSalary);
+        Employee minSalary = DataGenerator.getEmployees().stream().min(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getId)).get();
+        System.out.println(minSalary);
+        double avgSalary = DataGenerator.getEmployees().stream().collect(Collectors.averagingDouble(Employee::getSalary));
+        System.out.println(avgSalary);
     }
 
     private static void findMatch() {
