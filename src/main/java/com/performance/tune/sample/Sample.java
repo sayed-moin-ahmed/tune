@@ -1,44 +1,25 @@
 package com.performance.tune.sample;
 
 
-import com.performance.tune.sample.pojo.Address;
-import com.performance.tune.sample.pojo.CD;
 import com.performance.tune.sample.pojo.Employee;
 import com.performance.tune.sample.pojo.Person;
 import com.performance.tune.sample.utility.DataGenerator;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
-import java.util.function.IntPredicate;
-import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -60,6 +41,12 @@ public class Sample {
         //findMatch();
         //minMaxAvg();
         //reduce();
+        BinaryOperator<String> sortStringAsc = (str1,str2) -> str1.compareTo(str2)>0?str1:str2;
+        var result = sortStringAsc.apply("b","a");
+        System.out.println("---"+result);
+        String[] value = {"d","a","c","b"};
+        var result1 = Stream.of(value).sorted(Collections.reverseOrder()).peek(System.out::println).reduce(sortStringAsc).orElse("");
+        System.out.println(result1);
     }
 
     private static void reduce() {
