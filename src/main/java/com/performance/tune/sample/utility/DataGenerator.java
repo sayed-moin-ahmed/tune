@@ -38,11 +38,11 @@ public class DataGenerator {
     }
 
     public static List<Person> getPersons(){
-        var person1 = new Person(10,"sam");
-        var person2 = new Person(10,"sam");
-        var person3 = new Person(11,"sam");
-        var person4 = new Person(12,"pam");
-        var person5 = new Person(15,"rock");
+        var person1 = new Person(10,"sam1");
+        var person2 = new Person(20,"sam2");
+        var person3 = new Person(30,"sam3");
+        var person4 = new Person(40,"pam");
+        var person5 = new Person(50,"rock");
         return List.of(person1,person2,person3,person4,person5);
     }
 
