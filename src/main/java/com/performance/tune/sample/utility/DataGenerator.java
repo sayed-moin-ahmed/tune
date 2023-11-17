@@ -38,12 +38,13 @@ public class DataGenerator {
     }
 
     public static List<Person> getPersons(){
+        var person0 = new Person(10,"zzz");
         var person1 = new Person(10,"sam1");
         var person2 = new Person(20,"sam2");
         var person3 = new Person(30,"sam3");
         var person4 = new Person(40,"pam");
-        var person5 = new Person(50,"rock");
-        return List.of(person1,person2,person3,person4,person5);
+        var person5 = new Person(10,"rock");
+        return List.of(person0,person1,person2,person3,person4,person5);
     }
 
 
