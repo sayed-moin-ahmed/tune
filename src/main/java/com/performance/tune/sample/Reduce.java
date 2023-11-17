@@ -6,8 +6,9 @@ import com.performance.tune.sample.pojo.Person;
 import com.performance.tune.sample.utility.DataGenerator;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Comparator.comparing;
 
@@ -32,6 +33,20 @@ public class Reduce {
         //<R> R collect(Supplier<R> supplier,BiConsumer<R, ? super T> accumulator,BiConsumer<R, R> combiner);
         var rs1 = DataGenerator.getEmployees().stream().flatMap(e->e.getAddress().stream()).collect(ArrayList::new,ArrayList::add,ArrayList::addAll);
         System.out.println(rs1);
+        rs1.add(new Address("204","samp",560064));
+        System.out.println(rs1);
+
+        var rs2 = DataGenerator.getEmployees().stream().flatMap(e->e.getAddress().stream()).collect(Collectors.toList());
+                rs2.add(new Address("sam","tom",10));
+        System.out.println(rs2);
+        var rs3 = DataGenerator.getEmployees().stream().flatMap(e->e.getAddress().stream()).toList();
+        //below line will give unsupported exception
+        //rs3.add(new Address("sam","tom",10));
+        System.out.println(rs3);
+
+        var append = Stream.of("Hello","world!","{}").collect(()->new StringBuilder(),(sb,str)->sb.append(" ").append(str),(sb1,sb2)->sb1.append(sb2));
+        System.out.println(append);
+
 
     }
 }
