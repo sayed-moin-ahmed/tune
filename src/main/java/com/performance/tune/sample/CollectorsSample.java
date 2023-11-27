@@ -30,5 +30,7 @@ public class CollectorsSample {
         BinaryOperator<Person> compare = (person1, person2) -> person1.getName().compareTo(person2.getName()) > 0 ? person1:person2;
         var map2 = DataGenerator.getPersons().stream().collect(Collectors.toMap(keyMapper,identity(),compare));
         System.out.println(map2);
+        var filter = DataGenerator.getPersons().stream().collect(Collectors.filtering(person -> person.getAge()>10,Collectors.toList()));
+        System.out.println(filter);
     }
 }
