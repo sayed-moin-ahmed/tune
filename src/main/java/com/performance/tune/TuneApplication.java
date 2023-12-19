@@ -26,29 +26,29 @@ public class TuneApplication {
 	}
 
 
-	@Scheduled(cron = "0 */1 * * * *")
-	public void test() throws InterruptedException {
-		System.out.print("Testing................");
-		Stream.of(123).map(e-> {
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException ex) {
-				throw new RuntimeException(ex);
-			}
-			return e;
-		}).findFirst();
-	}
-
-
-	@Scheduled(cron = "*/1 * * * * *")
-	public void test1(){
-		testYearlyCronTaskScheduled();
-	}
-	public void testYearlyCronTaskScheduled() {
-		Set<ScheduledTask> scheduledTasks = scheduledTaskHolder.getScheduledTasks();
-		scheduledTasks.forEach(scheduledTask -> scheduledTask.getTask().getRunnable().getClass().getDeclaredMethods());
-		scheduledTasks.stream()
-				.forEach(e->System.out.println(e.toString()));
-	}
+//	@Scheduled(cron = "0 */1 * * * *")
+//	public void test() throws InterruptedException {
+//		System.out.print("Testing................");
+//		Stream.of(123).map(e-> {
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException ex) {
+//				throw new RuntimeException(ex);
+//			}
+//			return e;
+//		}).findFirst();
+//	}
+//
+//
+//	@Scheduled(cron = "*/1 * * * * *")
+//	public void test1(){
+//		testYearlyCronTaskScheduled();
+//	}
+//	public void testYearlyCronTaskScheduled() {
+//		Set<ScheduledTask> scheduledTasks = scheduledTaskHolder.getScheduledTasks();
+//		scheduledTasks.forEach(scheduledTask -> scheduledTask.getTask().getRunnable().getClass().getDeclaredMethods());
+//		scheduledTasks.stream()
+//				.forEach(e->System.out.println(e.toString()));
+//	}
 
 }
