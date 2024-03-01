@@ -2,3 +2,5 @@
 /shelf/
 /workspace.xml
 /cody_history.xml
+# JetBrains IDE
+.idea/**
